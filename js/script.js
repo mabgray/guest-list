@@ -11,7 +11,8 @@ const guestCount = document.querySelector(".attendance");
 // alert when guest list is full (not yet visible\)
 const guestFull = document.querySelector(".alert");
 const assignButton = document.querySelector(".assign");
-const assignedItems = document.querySelector(".assignedItems");
+const assignedItems = document.querySelector(".assigned-items");
+
 
 addGuestButton.addEventListener("click", function(){
     let guest = guestInput.value;
@@ -53,13 +54,18 @@ const updateGuestCount = function(){
 const assignItems = function(){
     let potLuckItems = ["tofu scramble", "bean and cheese quesidillas", "kale chips","blondies", "ooey gooey bars", "macaroni salad", "buffalo cauliflower", "watermelon", "limeade", "grapes", "potato chips","veggie burger sliders"];
 
-    const allGuests = document.querySelectorAll(".guestList li");
-        for(var guest of allGuests){
+    const allGuests = document.querySelectorAll(".guest-list li");
+    console.log(allGuests);
+        // for(let i = 0; i < allGuests.length; i++ ){
+        for(let guest of allGuests){
+           // let guest = allGuests[i];
+            console.log(guest);
             let randomPotLuckIndex = Math.floor(Math.random() * potLuckItems.length);
             let randomPotLuckItem = potLuckItems[randomPotLuckIndex];
-            listItem.innerText = `hey ${guest.innerText} can you bring ${randomPotLuckItem}?`
-            assignedItems.append(listItem);
+            guest.innerText = `hey ${guest.innerText} can you bring ${randomPotLuckItem}?`
+            assignedItems.append(guest);
             potLuckItems.splice(randomPotLuckIndex, 1);
+
 
         }
 
@@ -69,3 +75,9 @@ assignButton.addEventListener("click", function(){
     assignItems();
     assignButton.disabled = true;
 });
+
+for(let i = 0; i < 8; i++){
+    let person = "guest" + i;
+    addToList(person)
+    updateGuestCount();
+}
