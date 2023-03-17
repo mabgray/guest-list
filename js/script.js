@@ -56,7 +56,7 @@ const assignItems = function(){
 
     const allGuests = document.querySelectorAll(".guest-list li");
     console.log(allGuests);
-        // for(let i = 0; i < allGuests.length; i++ ){
+        
         for(let guest of allGuests){
            // let guest = allGuests[i];
             console.log(guest);
@@ -74,10 +74,10 @@ const assignItems = function(){
 assignButton.addEventListener("click", function(){
     assignItems();
     assignButton.disabled = true;
-});
-
-for(let i = 0; i < 8; i++){
-    let person = "guest" + i;
     addToList(person)
     updateGuestCount();
-}
+});
+
+// for(let i = 0; i < 8; i++){
+//     let person = "guest" + i;
+   
